@@ -1,6 +1,6 @@
-include "main.h"
+#include "main.h"
 /**
-*main - check the code for Holberton School students
+*print_alphabet_x10 - function to print abc
  *
  * Return: 0
  */
