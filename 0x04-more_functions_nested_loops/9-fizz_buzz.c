@@ -35,10 +35,10 @@ int main(void)
 		}
 		else
 		{
-			printf("%d ", num);
+printf("%d ", num);
 		}
 	}
-	printf("\n");
+printf("\n");
 
 return (0);
 }
