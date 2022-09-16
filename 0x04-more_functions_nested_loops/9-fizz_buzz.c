@@ -1,5 +1,3 @@
-Task 9
-
 #include <stdio.h>
 /**
  * main - main function
