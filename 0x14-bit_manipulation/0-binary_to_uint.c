@@ -1,48 +1,43 @@
-#include <stddef.h>
 #include "main.h"
 
-/**
- * check_valid_string - checks if a string has only 0's and 1's
- * @b: string to be checked
- *
- * Return: 1 if string is valid, 0 otherwise
- */
-int check_valid_string(const char *b)
-{
-	if (b == NULL)
-		return (0);
-	while (*b)
-	{
-		if (*b != '1' && *b != '0')
-			return (0);
-		b++;
-	}
-
-	return (1);
-}
-
 
 /**
- * binary_to_uint - converts a binary to an unsigned int
- * @b: the binary number as a string
+ * binary_to_uint - converts a binary number to an unsigned int.
  *
- * Return: the converted value
+ * @b: pointing to a string of 0 and 1 chars
+ *
+ * Return: the converted number, or 0 if
+ * -there is one or more chars in the string b that is not 0 or 1
+ * -b is NULL
  */
+
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int decimal = 0;
-	int str_len = 0, base = 1;
+	int i = 0, m = 1;/*string length*/
+	unsigned int result = 0;
 
-	if (!check_valid_string(b))
+	/*if b is null return 0*/
+	if (!b)
 		return (0);
-	while (b[str_len] != '\0')
-		str_len++;
-	while (str_len)
+
+	/*loop thru the string*/
+	while (*(b + i) != '\0')
 	{
-		decimal += ((b[str_len - 1] - '0') * base);
-		base *= 2;
-		str_len--;
+		/*it the current character is not 1 or 0 return 0*/
+		if (*(b + i) != '0' && *(b + i) != '1')
+			return (0);
+
+		i++;
 	}
 
-	return (decimal);
+	--i;
+
+	while (i >= 0)
+	{
+		result += (*(b + i) - '0') * m;
+		m *= 2;
+		--i;
+	}
+
+	return (result);
 }
